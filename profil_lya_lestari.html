@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website profil pribadi Lya Lestari, mahasiswa Politeknik Indonusa Surakarta.">
+  <title>Profil | Lya Lestari</title>
+  <style>
+    :root {
+      --bg: #080d1c;
+      --panel: rgba(18, 27, 52, .78);
+      --text: #f4f6ff;
+      --muted: #aab4cf;
+      --accent: #8b7cff;
+      --cyan: #55d6e8;
+      --line: rgba(255,255,255,.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 85% 10%, rgba(83, 73, 190, .25), transparent 30%),
+        radial-gradient(circle at 10% 45%, rgba(32, 154, 180, .14), transparent 28%),
+        var(--bg);
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 90%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(8,13,28,.82); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-size: 1.25rem; font-weight: 800; letter-spacing: 1px; }
+    .brand span { color: var(--cyan); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: .94rem; transition: .25s; }
+    .nav-links a:hover { color: var(--cyan); }
+    .menu-btn { display: none; background: none; border: 1px solid var(--line); color: white; padding: 7px 11px; border-radius: 9px; font-size: 1.2rem; }
+    .hero { min-height: 83vh; display: grid; grid-template-columns: 1.3fr .7fr; align-items: center; gap: 45px; padding: 75px 0; }
+    .eyebrow { color: var(--cyan); text-transform: uppercase; letter-spacing: 3px; font-size: .78rem; font-weight: 700; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.4rem); line-height: 1.08; margin: 15px 0; letter-spacing: -2px; }
+    h1 span { background: linear-gradient(90deg, var(--cyan), #a99aff); -webkit-background-clip: text; color: transparent; }
+    .hero p { color: var(--muted); max-width: 600px; font-size: 1.08rem; }
+    .typed { color: var(--cyan); font-weight: 700; min-height: 32px; margin: 13px 0 22px; }
+    .buttons { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 27px; }
+    .btn { display: inline-block; padding: 12px 21px; border-radius: 12px; font-weight: 700; transition: .25s; }
+    .primary { color: #08101e; background: linear-gradient(100deg, var(--cyan), #a99aff); }
+    .secondary { border: 1px solid var(--line); color: var(--text); }
+    .btn:hover { transform: translateY(-3px); filter: brightness(1.08); }
+    .profile-card {
+      background: linear-gradient(145deg, rgba(139,124,255,.18), rgba(85,214,232,.08));
+      border: 1px solid var(--line); border-radius: 28px; padding: 28px;
+      box-shadow: 0 25px 70px rgba(0,0,0,.28); text-align: center;
+    }
+    .avatar {
+      width: 190px; height: 190px; margin: 5px auto 22px; border-radius: 50%;
+      display: grid; place-items: center; font-size: 4rem; font-weight: 800;
+      color: #10152b; background: linear-gradient(135deg, var(--cyan), #a99aff);
+      border: 7px solid rgba(255,255,255,.12); box-shadow: 0 0 45px rgba(85,214,232,.18);
+    }
+    .profile-card h2 { font-size: 1.35rem; }
+    .profile-card p { color: var(--muted); font-size: .92rem; margin-top: 5px; }
+    section { padding: 75px 0; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 12px; }
+    .section-title span { color: var(--cyan); }
+    .section-intro { color: var(--muted); max-width: 680px; margin-bottom: 30px; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 22px; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 25px; }
+    .card p { color: var(--muted); }
+    .facts { display: grid; gap: 14px; }
+    .fact { padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .fact:last-child { border: 0; padding: 0; }
+    .fact small { display: block; color: var(--muted); }
+    .fact strong { color: var(--text); }
+    .education { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .edu-item { position: relative; padding-left: 23px; border-left: 2px solid var(--accent); }
+    .edu-item::before { content: ""; position: absolute; left: -7px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--cyan); }
+    .edu-item small { color: var(--cyan); font-weight: 700; }
+    .edu-item h3 { margin: 7px 0; }
+    .edu-item p { color: var(--muted); }
+    .interest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .interest { min-height: 150px; }
+    .interest .symbol { font-size: 1.8rem; margin-bottom: 10px; }
+    .interest p { color: var(--muted); font-size: .93rem; margin-top: 5px; }
+    .goal { text-align: center; background: linear-gradient(120deg, rgba(139,124,255,.17), rgba(85,214,232,.1)); }
+    .goal p { color: var(--muted); max-width: 720px; margin: 12px auto 0; }
+    footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--muted); text-align: center; font-size: .9rem; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: .7s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+    @media (max-width: 760px) {
+      .menu-btn { display: block; }
+      .nav-links { display: none; position: absolute; top: 70px; left: 0; width: 100%; padding: 20px 5%; background: #0c1328; flex-direction: column; gap: 14px; border-bottom: 1px solid var(--line); }
+      .nav-links.open { display: flex; }
+      .hero, .about-grid, .education { grid-template-columns: 1fr; }
+      .hero { text-align: center; gap: 30px; padding-top: 55px; }
+      .hero p { margin-inline: auto; }
+      .buttons { justify-content: center; }
+      .profile-card { max-width: 390px; margin: auto; width: 100%; }
+      .interest-grid { grid-template-columns: 1fr; }
+      section { padding: 58px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="#home">LYA<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#education">Pendidikan</a></li>
+        <li><a href="#interests">Minat</a></li>
+        <li><a href="#goals">Tujuan</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div class="reveal">
+        <div class="eyebrow">Personal Profile · Student</div>
+        <h1>Halo, saya<br><span>Lya Lestari.</span></h1>
+        <p>Mahasiswa semester 1 di Politeknik Indonusa Surakarta yang sedang memulai perjalanan baru untuk mengenal dan mempelajari dunia teknologi komputer.</p>
+        <div class="typed" id="typedText">Future Software Developer</div>
+        <div class="buttons">
+          <a class="btn primary" href="#about">Kenali Saya</a>
+          <a class="btn secondary" href="#education">Lihat Pendidikan</a>
+        </div>
+      </div>
+      <div class="profile-card reveal">
+        <div class="avatar">LL</div>
+        <h2>Lya Lestari</h2>
+        <p>Mahasiswa · Perangkat Lunak</p>
+        <p>Politeknik Indonusa Surakarta</p>
+      </div>
+    </section>
+
+    <section class="container" id="about">
+      <div class="reveal">
+        <div class="eyebrow">A Little About Me</div>
+        <h2 class="section-title">Tentang <span>Saya</span></h2>
+        <p class="section-intro">Setiap orang memiliki perjalanan dan proses belajar yang berbeda. Ini adalah sedikit cerita tentang perjalanan pendidikan saya.</p>
+      </div>
+      <div class="about-grid">
+        <article class="card reveal">
+          <h3>Perjalanan Saya</h3>
+          <p>Saya adalah Lya Lestari, mahasiswa semester 1 di Politeknik Indonusa Surakarta, jurusan Perangkat Lunak. Sebelumnya, saya menempuh pendidikan di SMA Negeri 1 Sumberlawang dengan jurusan IPA. Walaupun latar belakang pendidikan saya berasal dari bidang IPA, sekarang saya ingin memperluas pengetahuan dan mempelajari teknologi komputer. Bagi saya, mencoba hal baru adalah kesempatan untuk berkembang, menambah pengalaman, dan mempersiapkan masa depan.</p>
+        </article>
+        <aside class="card facts reveal">
+          <div class="fact"><small>Nama</small><strong>Lya Lestari</strong></div>
+          <div class="fact"><small>Status</small><strong>Mahasiswa semester 1</strong></div>
+          <div class="fact"><small>Kampus</small><strong>Politeknik Indonusa Surakarta</strong></div>
+          <div class="fact"><small>Bidang studi</small><strong>Perangkat Lunak</strong></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container" id="education">
+      <div class="reveal">
+        <div class="eyebrow">My Education</div>
+        <h2 class="section-title">Riwayat <span>Pendidikan</span></h2>
+        <p class="section-intro">Dua tahap pendidikan yang menjadi bagian dari perjalanan saya sampai saat ini.</p>
+      </div>
+      <div class="education">
+        <article class="card edu-item reveal">
+          <small>SEBELUMNYA</small>
+          <h3>SMA Negeri 1 Sumberlawang</h3>
+          <p>Jurusan Ilmu Pengetahuan Alam (IPA).</p>
+        </article>
+        <article class="card edu-item reveal">
+          <small>SAAT INI</small>
+          <h3>Politeknik Indonusa Surakarta</h3>
+          <p>Program studi Perangkat Lunak · Semester 1.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="interests">
+      <div class="reveal">
+        <div class="eyebrow">What I Want to Explore</div>
+        <h2 class="section-title">Minat dan <span>Hal yang Dipelajari</span></h2>
+        <p class="section-intro">Saya ingin terus mengembangkan pengetahuan dan keterampilan baru, terutama di bidang teknologi.</p>
+      </div>
+      <div class="interest-grid">
+        <article class="card interest reveal">
+          <div class="symbol">💻</div>
+          <h3>Teknologi Komputer</h3>
+          <p>Mengenal cara kerja komputer, perangkat keras, dan perangkat lunak.</p>
+        </article>
+        <article class="card interest reveal">
+          <div class="symbol">🌐</div>
+          <h3>Web Development</h3>
+          <p>Belajar membuat website menggunakan HTML, CSS, dan JavaScript.</p>
+        </article>
+        <article class="card interest reveal">
+          <div class="symbol">⌨️</div>
+          <h3>Pemrograman</h3>
+          <p>Melatih logika dan mencoba membuat program sederhana.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="goal" id="goals">
+      <div class="container reveal">
+        <div class="eyebrow">My Future Goals</div>
+        <h2 class="section-title">Terus Belajar, <span>Terus Bertumbuh.</span></h2>
+        <p>Saya berharap dapat memahami dunia teknologi komputer lebih dalam, meningkatkan kemampuan di bidang perangkat lunak, dan menghasilkan karya yang bermanfaat. Saya percaya bahwa proses belajar membutuhkan waktu, kemauan, dan konsistensi. Langkah kecil hari ini adalah bagian dari tujuan saya di masa depan.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Lya Lestari · Dibuat dengan HTML, CSS, dan JavaScript.</div>
+  </footer>
+
+  <script>
+    // Menu navigasi untuk tampilan HP
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    // Tutup menu setelah salah satu tautan dipilih
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => navLinks.classList.remove("open"));
+    });
+
+    // Efek teks berganti
+    const phrases = ["Future Software Developer", "Learning Technology", "Growing Through Every Process"];
+    const typedText = document.getElementById("typedText");
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeEffect() {
+      const current = phrases[phraseIndex];
+      typedText.textContent = current.substring(0, charIndex);
+
+      if (!deleting && charIndex < current.length) {
+        charIndex++;
+        setTimeout(typeEffect, 85);
+      } else if (deleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeEffect, 40);
+      } else {
+        deleting = !deleting;
+        if (!deleting) phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(typeEffect, 850);
+      }
+    }
+    typeEffect();
+
+    // Animasi saat bagian website muncul di layar
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
+
+    // Tahun otomatis
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
